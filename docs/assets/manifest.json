@@ -1,0 +1,30 @@
+[
+  {
+    "file": "00-browser-viewport.png",
+    "label": "浏览器视口"
+  },
+  {
+    "file": "01-dashboard-full.png",
+    "label": "大屏全貌"
+  },
+  {
+    "file": "02-header.png",
+    "label": "顶部标题栏"
+  },
+  {
+    "file": "03-overview-panel.png",
+    "label": "左侧概览区"
+  },
+  {
+    "file": "04-center-trend.png",
+    "label": "中央趋势图"
+  },
+  {
+    "file": "05-ranking-alerts.png",
+    "label": "右侧排行与告警"
+  },
+  {
+    "file": "06-footer-logs.png",
+    "label": "底部滚动与日志"
+  }
+]

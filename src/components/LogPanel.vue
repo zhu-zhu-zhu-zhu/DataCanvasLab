@@ -23,7 +23,13 @@ function levelClass(level: LogEntry['level']): string {
 
 <template>
   <div class="log-panel">
-    <div v-for="entry in entries.slice(0, 8)" :key="entry.id" class="log-panel__row" :class="levelClass(entry.level)">
+    <div
+      v-for="entry in entries.slice(0, 8)"
+      :key="entry.id"
+      class="log-panel__row"
+      :class="levelClass(entry.level)"
+    >
+      <span class="log-panel__pipe" />
       <span class="log-panel__time">{{ new Date(entry.timestamp).toLocaleTimeString('zh-CN') }}</span>
       <span class="log-panel__level">{{ entry.level.toUpperCase() }}</span>
       <span class="log-panel__msg">{{ entry.message }}</span>
@@ -35,18 +41,45 @@ function levelClass(level: LogEntry['level']): string {
 .log-panel {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-family: 'Consolas', monospace;
-  font-size: 11px;
+  gap: 2px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 10px;
   max-height: 100%;
   overflow: hidden;
 
   &__row {
     display: grid;
-    grid-template-columns: 72px 52px 1fr;
+    grid-template-columns: 3px 68px 46px 1fr;
     gap: 8px;
-    padding: 3px 0;
-    border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+    align-items: center;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    transition: background 0.15s;
+
+    &:hover {
+      background: rgba(0, 229, 255, 0.06);
+    }
+  }
+
+  &__pipe {
+    width: 3px;
+    height: 14px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &.log-info .log-panel__pipe {
+    background: $color-primary;
+    box-shadow: 0 0 6px $color-primary;
+  }
+
+  &.log-warn .log-panel__pipe {
+    background: $color-accent;
+  }
+
+  &.log-error .log-panel__pipe {
+    background: $color-danger;
   }
 
   &__time {
@@ -55,26 +88,27 @@ function levelClass(level: LogEntry['level']): string {
 
   &__level {
     font-weight: 700;
+    letter-spacing: 0.06em;
   }
 
-  .log-debug .log-panel__level {
-    color: rgba(232, 244, 255, 0.45);
+  &.log-debug .log-panel__level {
+    color: rgba(238, 246, 255, 0.4);
   }
 
-  .log-info .log-panel__level {
+  &.log-info .log-panel__level {
     color: $color-primary;
   }
 
-  .log-warn .log-panel__level {
+  &.log-warn .log-panel__level {
     color: $color-accent;
   }
 
-  .log-error .log-panel__level {
-    color: #fb7185;
+  &.log-error .log-panel__level {
+    color: $color-danger;
   }
 
   &__msg {
-    color: rgba(232, 244, 255, 0.85);
+    color: rgba(238, 246, 255, 0.82);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

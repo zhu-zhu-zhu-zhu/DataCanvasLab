@@ -9,7 +9,7 @@ const data = computed(() => store.trend)
 </script>
 
 <template>
-  <PanelBox title="24小时城市流量趋势" height="100%">
+  <PanelBox title="24小时城市流量趋势" height="100%" accent="gold">
     <div class="chart-wrap">
       <LineChart :data="data" />
     </div>

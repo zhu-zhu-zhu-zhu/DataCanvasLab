@@ -63,10 +63,33 @@ usePolling(() => store.loadAll(), 30000)
   flex: 1;
   display: grid;
   grid-template-columns: 420px 1fr 420px;
-  gap: 16px;
-  padding: 16px 20px;
+  gap: 18px;
+  padding: 14px 22px;
   min-height: 0;
   overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    bottom: 8%;
+    left: calc(420px + 22px + 9px);
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    bottom: 8%;
+    right: calc(420px + 22px + 9px);
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+    pointer-events: none;
+  }
 
   &__col {
     display: flex;
@@ -76,11 +99,21 @@ usePolling(() => store.loadAll(), 30000)
 
     &--center {
       min-height: 0;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border: 1px solid rgba(255, 193, 77, 0.08);
+        pointer-events: none;
+        z-index: 0;
+      }
     }
   }
 
   &__footer {
-    padding: 0 20px 16px;
+    padding: 0 22px 14px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -88,13 +121,15 @@ usePolling(() => store.loadAll(), 30000)
 
   &__ticker {
     @include glass-panel;
+    @include cyber-corners(12px, rgba(255, 193, 77, 0.4));
     padding: 10px 16px;
+    border-color: rgba(255, 193, 77, 0.15);
   }
 
   &__logs {
     :deep(.panel-box__body) {
-      padding-top: 8px;
-      padding-bottom: 8px;
+      padding-top: 6px;
+      padding-bottom: 6px;
     }
   }
 }

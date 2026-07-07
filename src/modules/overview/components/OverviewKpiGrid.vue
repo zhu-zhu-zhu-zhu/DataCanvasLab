@@ -9,7 +9,7 @@ const items = computed(() => store.kpi?.items ?? [])
 
 <template>
   <div class="kpi-grid">
-    <KpiCard v-for="item in items" :key="item.key" :item="item" />
+    <KpiCard v-for="(item, i) in items" :key="item.key" :item="item" :index="i" />
   </div>
 </template>
 

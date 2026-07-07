@@ -3,17 +3,24 @@ import { computed } from 'vue'
 import type { EChartsOption } from 'echarts'
 import type { TrendPoint } from '@/api/adapters/types'
 import BaseChart from './BaseChart.vue'
-import { axisStyle, baseChartTheme, chartColors } from './chartTheme'
+import { axisStyle, baseChartTheme, chartColors, neonLineGradient } from './chartTheme'
 
 const props = defineProps<{
   data: TrendPoint[]
   title?: string
+  variant?: 'primary' | 'secondary'
 }>()
+
+const lineColor = computed(() => (props.variant === 'secondary' ? chartColors[1] : chartColors[0]))
 
 const option = computed((): EChartsOption => ({
   ...baseChartTheme,
   title: props.title
-    ? { text: props.title, textStyle: { color: '#00d4ff', fontSize: 13 }, left: 0 }
+    ? {
+        text: props.title,
+        textStyle: { color: lineColor.value, fontSize: 12, fontFamily: 'Orbitron' },
+        left: 0,
+      }
     : undefined,
   xAxis: {
     type: 'category' as const,
@@ -25,25 +32,27 @@ const option = computed((): EChartsOption => ({
   series: [
     {
       type: 'line' as const,
-      smooth: true,
+      smooth: 0.35,
       symbol: 'circle',
-      symbolSize: 6,
+      symbolSize: 5,
+      showSymbol: false,
       data: props.data.map((d) => d.value),
-      lineStyle: { color: chartColors[0], width: 2 },
-      itemStyle: { color: chartColors[0] },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [
-            { offset: 0, color: 'rgba(0, 212, 255, 0.35)' },
-            { offset: 1, color: 'rgba(0, 212, 255, 0.02)' },
-          ],
-        },
+      lineStyle: {
+        color: lineColor.value,
+        width: 2,
+        shadowColor: lineColor.value,
+        shadowBlur: 12,
       },
+      itemStyle: {
+        color: lineColor.value,
+        borderColor: '#fff',
+        borderWidth: 1,
+      },
+      emphasis: {
+        scale: true,
+        itemStyle: { shadowBlur: 16, shadowColor: lineColor.value },
+      },
+      areaStyle: { color: neonLineGradient() },
     },
   ],
 }))

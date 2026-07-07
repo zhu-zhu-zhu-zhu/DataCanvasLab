@@ -10,6 +10,6 @@ const data = computed(() => store.trend.slice(0, 12))
 
 <template>
   <PanelBox title="在线服务趋势" height="220px">
-    <LineChart :data="data" />
+    <LineChart :data="data" variant="secondary" />
   </PanelBox>
 </template>
