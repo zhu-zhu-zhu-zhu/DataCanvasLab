@@ -1,0 +1,21 @@
+@use './variables.scss' as *;
+
+@mixin glass-panel {
+  background: $color-panel;
+  backdrop-filter: blur(12px);
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.08), inset 0 0 30px rgba(0, 212, 255, 0.03);
+}
+
+@mixin glow-text($color: $color-primary) {
+  color: $color;
+  text-shadow: 0 0 12px rgba($color, 0.45);
+}
+
+@mixin section-title {
+  font-family: $font-display;
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  @include glow-text($color-primary);
+}

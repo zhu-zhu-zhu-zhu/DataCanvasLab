@@ -28,17 +28,64 @@
 
 ## 当前状态
 
-🚧 **项目初始化阶段** — 仓库已建立，后续将逐步补充教程、示例代码与大屏模板。
+✅ **MVP 已上线** — 智慧城市运营监控大屏（Vue 3 + ECharts + Mock 数据）
 
 ---
 
 ## 快速开始
 
-> 教程与示例代码将在后续版本中陆续发布，敬请期待。
+### 环境要求
+
+- Node.js 18+
+- npm 9+
+
+### 安装与运行
 
 ```bash
 git clone https://github.com/zhu-zhu-zhu-zhu/DataCanvasLab.git
 cd DataCanvasLab
+npm install
+npm run dev
+```
+
+浏览器访问：**http://localhost:5173**
+
+### 其他命令
+
+```bash
+npm run build    # 生产构建
+npm run test     # 单元测试
+npm run lint     # 代码检查
+npm run preview  # 预览构建结果
+```
+
+### Mock / API 切换
+
+在 `.env.development` 中：
+
+```env
+VITE_USE_MOCK=true   # 使用 Mock 数据（默认）
+VITE_USE_MOCK=false  # 切换为 HttpAdapter 真实 API
+```
+
+---
+
+## 项目结构
+
+```
+src/
+├── api/           # Axios + Adapter（Mock / HTTP 切换）
+├── charts/        # ECharts 图表封装
+├── components/    # 通用 UI 组件
+├── composables/   # 轮询、大屏缩放
+├── core/logger/   # 分级日志 + MemoryTransport
+├── layouts/       # 大屏布局
+├── modules/       # 业务模块（overview / traffic / ranking / alert）
+├── mock/          # Mock 数据
+├── services/      # 业务服务层
+├── stores/        # Pinia 状态
+├── styles/        # 全局 SCSS
+└── views/         # 页面组装
 ```
 
 ---
