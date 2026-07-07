@@ -5,7 +5,7 @@
 <p align="center">
   <img src="docs/assets/01-dashboard-full.png" alt="数绘视界大屏全貌" width="920" />
   <br />
-  <em>智慧城市运营监控大屏 · 1920×1080 设计稿</em>
+  <em>智慧城市运营监控大屏 · Obsidian Aurora 主题 · 1920×1080 设计稿</em>
 </p>
 
 ---
@@ -16,10 +16,11 @@
 
 | 特性 | 说明 |
 |------|------|
-| 视觉 | 深色科技风 HUD 界面，玻璃态面板 + 霓虹图表 |
+| 视觉 | **Obsidian Aurora** 高级暗色主题 — 玫瑰金 + 紫罗兰配色，玻璃态面板 + 动态极光背景 |
+| 动效 | 极光漂移、流动网格、扫光、漂浮粒子、星点闪烁等多层背景动画 |
 | 数据 | Mock 数据开箱即用，支持切换真实 API |
 | 架构 | Adapter 模式 + Pinia + 业务模块分层 |
-| 工程 | Vitest 单元测试 + ESLint + 自动化截图 |
+| 工程 | Vitest 单元测试 + ESLint + Playwright 自动化截图 |
 
 ---
 
@@ -27,7 +28,7 @@
 
 ### 顶部标题栏
 
-实时时钟、城市标签、系统状态芯片，渐变金属质感主标题。
+实时时钟、城市标签、系统状态芯片，Cormorant Garamond 衬线主标题 + 玫瑰金渐变高光。
 
 <p align="center">
   <img src="docs/assets/02-header.png" alt="顶部标题栏" width="920" />
@@ -35,7 +36,7 @@
 
 ### 左侧 · 概览区
 
-KPI 数字卡片、分类占比饼图、区域业务柱状图。
+KPI 数字卡片（顶部高光线 + 柔光层）、分类占比饼图、区域业务柱状图。
 
 <p align="center">
   <img src="docs/assets/03-overview-panel.png" alt="左侧概览区" width="360" />
@@ -43,7 +44,7 @@ KPI 数字卡片、分类占比饼图、区域业务柱状图。
 
 ### 中央 · 核心趋势
 
-24 小时城市流量趋势大图，金色主题强调主视觉。
+24 小时城市流量趋势大图，玫瑰金主题强调主视觉。
 
 <p align="center">
   <img src="docs/assets/04-center-trend.png" alt="中央趋势图" width="520" />
@@ -64,6 +65,22 @@ KPI 数字卡片、分类占比饼图、区域业务柱状图。
 <p align="center">
   <img src="docs/assets/06-footer-logs.png" alt="底部日志区" width="920" />
 </p>
+
+---
+
+## 视觉设计
+
+当前版本采用 **Obsidian Aurora（黑曜石极光）** 设计语言：
+
+| 元素 | 说明 |
+|------|------|
+| 主色 | 玫瑰金 `#e8c896` — 标题、KPI、图表主线 |
+| 辅色 | 紫罗兰 `#b89bf8`、淡粉紫 `#f5b8fc` — 图表、排行、告警 |
+| 背景 | 多层极光光斑 + 流动网格 + 扫光 + 28 个漂浮粒子 |
+| 面板 | 毛玻璃质感，顶部白色高光 + 内发光边框 |
+| 字体 | Cormorant Garamond（标题）/ DM Sans（正文）/ JetBrains Mono（数据） |
+
+背景动效由 `ScreenBackdrop.vue` 实现，纯 CSS 动画，无额外依赖。
 
 ---
 
@@ -137,6 +154,7 @@ npm run screenshot
 | `04-center-trend.png` | 中央趋势图 |
 | `05-ranking-alerts.png` | 右侧排行告警 |
 | `06-footer-logs.png` | 底部日志区 |
+| `00-browser-viewport.png` | 浏览器视口 |
 
 > 修改 UI 后运行 `npm run screenshot` 即可刷新图文文档配图。
 
@@ -154,7 +172,7 @@ DataCanvasLab/
 ├── src/
 │   ├── api/             # Axios + Adapter（Mock / HTTP）
 │   ├── charts/          # ECharts 图表封装
-│   ├── components/      # 通用 UI + 特效
+│   ├── components/      # 通用 UI + 特效（ScreenBackdrop 等）
 │   ├── composables/     # 轮询、大屏缩放
 │   ├── core/logger/     # 分级日志系统
 │   ├── layouts/         # 大屏布局
@@ -162,7 +180,7 @@ DataCanvasLab/
 │   ├── mock/            # Mock 数据
 │   ├── services/        # 业务服务层
 │   ├── stores/          # Pinia 状态
-│   ├── styles/          # 全局 SCSS
+│   ├── styles/          # 全局 SCSS 主题变量
 │   └── views/           # 页面组装
 └── README.md
 ```

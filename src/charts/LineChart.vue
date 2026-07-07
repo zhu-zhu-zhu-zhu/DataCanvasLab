@@ -18,7 +18,7 @@ const option = computed((): EChartsOption => ({
   title: props.title
     ? {
         text: props.title,
-        textStyle: { color: lineColor.value, fontSize: 12, fontFamily: 'Orbitron' },
+        textStyle: { color: lineColor.value, fontSize: 12, fontFamily: 'DM Sans' },
         left: 0,
       }
     : undefined,

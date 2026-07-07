@@ -36,8 +36,9 @@ const timeText = () =>
     </div>
 
     <div class="screen-header__center">
-      <div class="screen-header__crown">
+      <div class="screen-header__ornament">
         <span class="screen-header__gem" />
+        <span class="screen-header__ornament-line" />
       </div>
       <h1 class="screen-header__title">
         <span class="screen-header__title-inner">数绘视界</span>
@@ -60,12 +61,23 @@ const timeText = () =>
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   height: 96px;
-  padding: 0 28px;
+  padding: 0 32px;
   position: relative;
   background:
-    linear-gradient(180deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 229, 255, 0.02) 60%, transparent 100%),
-    linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.06) 50%, transparent);
-  border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(184, 155, 248, 0.08) 30%, transparent 75%),
+    linear-gradient(90deg, transparent, rgba(232, 200, 150, 0.06) 50%, transparent);
+  border-bottom: 1px solid rgba(232, 200, 150, 0.16);
+  box-shadow: 0 4px 24px rgba(184, 155, 248, 0.08);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  }
 
   &::before {
     content: '';
@@ -76,19 +88,19 @@ const timeText = () =>
     height: 1px;
     background: linear-gradient(
       90deg,
-      transparent 5%,
-      rgba(0, 229, 255, 0.2) 20%,
-      rgba(0, 229, 255, 0.8) 50%,
-      rgba(0, 229, 255, 0.2) 80%,
-      transparent 95%
+      transparent 8%,
+      rgba(167, 139, 250, 0.25) 25%,
+      rgba(212, 175, 122, 0.7) 50%,
+      rgba(167, 139, 250, 0.25) 75%,
+      transparent 92%
     );
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    box-shadow: 0 0 24px rgba(212, 175, 122, 0.25);
   }
 
   &__wing {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     font-size: 12px;
     color: $color-text-dim;
 
@@ -98,10 +110,10 @@ const timeText = () =>
   }
 
   &__deco {
-    width: 48px;
-    height: 2px;
+    width: 40px;
+    height: 1px;
     background: linear-gradient(90deg, transparent, $color-primary);
-    opacity: 0.6;
+    opacity: 0.5;
 
     &--mirror {
       background: linear-gradient(90deg, $color-primary, transparent);
@@ -109,121 +121,115 @@ const timeText = () =>
   }
 
   &__tag {
-    padding: 5px 12px;
-    border: 1px solid rgba(0, 229, 255, 0.35);
-    background: rgba(0, 229, 255, 0.06);
+    padding: 5px 14px;
+    border: 1px solid rgba(212, 175, 122, 0.25);
+    background: rgba(212, 175, 122, 0.05);
     color: $color-primary;
-    font-family: $font-display;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    font-family: $font-body;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    border-radius: $radius-sm;
   }
 
   &__chip {
-    padding: 3px 8px;
-    font-family: $font-display;
+    padding: 4px 10px;
+    font-family: $font-body;
     font-size: 9px;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     color: $color-success;
-    border: 1px solid rgba(45, 212, 191, 0.35);
-    background: rgba(45, 212, 191, 0.08);
+    border: 1px solid rgba(134, 239, 172, 0.25);
+    background: rgba(134, 239, 172, 0.06);
+    border-radius: $radius-sm;
   }
 
   &__weather {
     font-size: 12px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
   }
 
   &__center {
     text-align: center;
     position: relative;
-    padding: 0 40px;
+    padding: 0 48px;
   }
 
-  &__crown {
+  &__ornament {
     position: absolute;
-    top: -4px;
+    top: -2px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, $color-accent, transparent);
-    opacity: 0.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 40px;
-      height: 1px;
-      background: $color-primary;
-      opacity: 0.5;
-    }
-
-    &::before {
-      left: -50px;
-      transform: rotate(-12deg);
-    }
-
-    &::after {
-      right: -50px;
-      transform: rotate(12deg);
-    }
+  &__ornament-line {
+    width: 100px;
+    height: 1px;
+    margin-top: 6px;
+    background: linear-gradient(90deg, transparent, $color-secondary, $color-primary, $color-secondary, transparent);
+    opacity: 0.6;
   }
 
   &__gem {
-    position: absolute;
-    top: -6px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    width: 8px;
-    height: 8px;
-    background: $color-accent;
-    box-shadow: 0 0 12px $color-accent;
+    width: 6px;
+    height: 6px;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, $color-primary, $color-accent);
+    box-shadow: 0 0 14px rgba(212, 175, 122, 0.5);
   }
 
   &__title {
     font-family: $font-display;
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    margin-left: 0.28em;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    margin-left: 0.22em;
     position: relative;
+    line-height: 1.1;
   }
 
   &__title-inner {
-    background: linear-gradient(180deg, #fff 0%, $color-primary 45%, $color-secondary 100%);
+    background: linear-gradient(
+      180deg,
+      #fff 0%,
+      $color-primary 35%,
+      $color-secondary 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.45));
+    filter: drop-shadow(0 2px 12px rgba(212, 175, 122, 0.3));
   }
 
   &__subtitle {
-    margin-top: 6px;
-    font-size: 11px;
-    letter-spacing: 0.32em;
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 0.28em;
     color: $color-text-dim;
     text-transform: uppercase;
+    font-weight: 500;
   }
 
   &__underline {
-    width: 200px;
-    height: 2px;
-    margin: 8px auto 0;
+    width: 160px;
+    height: 1px;
+    margin: 10px auto 0;
     background: linear-gradient(90deg, transparent, $color-primary, transparent);
-    opacity: 0.5;
+    opacity: 0.45;
   }
 
   &__clock {
-    font-family: $font-display;
-    font-size: 15px;
-    letter-spacing: 0.08em;
-    padding: 6px 12px;
-    border: 1px solid rgba(255, 193, 77, 0.3);
-    background: rgba(255, 193, 77, 0.06);
-    @include glow-text($color-accent);
+    font-family: $font-mono;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    padding: 7px 14px;
+    border: 1px solid rgba(212, 175, 122, 0.22);
+    background: rgba(212, 175, 122, 0.05);
+    color: $color-primary;
+    border-radius: $radius-sm;
   }
 }
 </style>

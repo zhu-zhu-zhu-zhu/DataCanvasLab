@@ -38,41 +38,42 @@ defineProps<{
 
   &__item {
     display: grid;
-    grid-template-columns: 4px 58px 48px 1fr;
+    grid-template-columns: 3px 58px 48px 1fr;
     gap: 8px;
     align-items: center;
-    padding: 9px 8px;
+    padding: 9px 10px;
     margin-bottom: 4px;
     font-size: 11px;
-    background: rgba(0, 229, 255, 0.02);
-    border: 1px solid rgba(0, 229, 255, 0.06);
+    background: rgba(167, 139, 250, 0.03);
+    border: 1px solid rgba(212, 175, 122, 0.06);
+    border-radius: $radius-sm;
     transition: background 0.2s;
 
     &:hover {
-      background: rgba(0, 229, 255, 0.06);
+      background: rgba(212, 175, 122, 0.05);
     }
 
     &.info .alert-list__indicator {
-      background: $color-primary;
-      box-shadow: 0 0 8px $color-primary;
+      background: $color-secondary;
+      box-shadow: 0 0 8px rgba(167, 139, 250, 0.4);
     }
 
     &.info .alert-list__level {
-      color: $color-primary;
+      color: $color-secondary;
     }
 
     &.warn .alert-list__indicator {
-      background: $color-accent;
-      box-shadow: 0 0 8px $color-accent;
+      background: $color-primary;
+      box-shadow: 0 0 8px rgba(212, 175, 122, 0.4);
     }
 
     &.warn .alert-list__level {
-      color: $color-accent;
+      color: $color-primary;
     }
 
     &.error .alert-list__indicator {
       background: $color-danger;
-      box-shadow: 0 0 8px $color-danger;
+      box-shadow: 0 0 8px rgba(251, 113, 133, 0.4);
     }
 
     &.error .alert-list__level {
@@ -81,7 +82,7 @@ defineProps<{
   }
 
   &__indicator {
-    width: 4px;
+    width: 3px;
     height: 100%;
     min-height: 20px;
     border-radius: 2px;
@@ -89,18 +90,18 @@ defineProps<{
 
   &__time {
     color: $color-text-dim;
-    font-family: $font-display;
+    font-family: $font-mono;
     font-size: 10px;
   }
 
   &__level {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 9px;
     letter-spacing: 0.08em;
   }
 
   &__msg {
-    color: rgba(238, 246, 255, 0.9);
+    color: rgba(245, 240, 235, 0.88);
     line-height: 1.3;
   }
 }

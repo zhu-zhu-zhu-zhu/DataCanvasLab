@@ -9,7 +9,7 @@ const items = computed(() => store.alerts)
 </script>
 
 <template>
-  <PanelBox title="实时告警" height="260px" accent="purple">
+  <PanelBox title="实时告警" height="260px" accent="violet">
     <AlertList :items="items" />
   </PanelBox>
 </template>

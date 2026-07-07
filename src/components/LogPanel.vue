@@ -42,7 +42,7 @@ function levelClass(level: LogEntry['level']): string {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-family: 'Consolas', 'Courier New', monospace;
+  font-family: $font-mono;
   font-size: 10px;
   max-height: 100%;
   overflow: hidden;
@@ -52,13 +52,38 @@ function levelClass(level: LogEntry['level']): string {
     grid-template-columns: 3px 68px 46px 1fr;
     gap: 8px;
     align-items: center;
-    padding: 4px 6px;
-    background: rgba(0, 0, 0, 0.15);
-    border-radius: 2px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: $radius-sm;
     transition: background 0.15s;
 
     &:hover {
-      background: rgba(0, 229, 255, 0.06);
+      background: rgba(212, 175, 122, 0.05);
+    }
+
+    &.log-info .log-panel__pipe {
+      background: $color-secondary;
+      box-shadow: 0 0 6px rgba(167, 139, 250, 0.4);
+    }
+
+    &.log-info .log-panel__level {
+      color: $color-secondary;
+    }
+
+    &.log-warn .log-panel__pipe {
+      background: $color-primary;
+    }
+
+    &.log-warn .log-panel__level {
+      color: $color-primary;
+    }
+
+    &.log-error .log-panel__pipe {
+      background: $color-danger;
+    }
+
+    &.log-error .log-panel__level {
+      color: $color-danger;
     }
   }
 
@@ -66,20 +91,7 @@ function levelClass(level: LogEntry['level']): string {
     width: 3px;
     height: 14px;
     border-radius: 2px;
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  &.log-info .log-panel__pipe {
-    background: $color-primary;
-    box-shadow: 0 0 6px $color-primary;
-  }
-
-  &.log-warn .log-panel__pipe {
-    background: $color-accent;
-  }
-
-  &.log-error .log-panel__pipe {
-    background: $color-danger;
+    background: rgba(255, 255, 255, 0.12);
   }
 
   &__time {
@@ -87,28 +99,16 @@ function levelClass(level: LogEntry['level']): string {
   }
 
   &__level {
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.06em;
   }
 
-  &.log-debug .log-panel__level {
-    color: rgba(238, 246, 255, 0.4);
-  }
-
-  &.log-info .log-panel__level {
-    color: $color-primary;
-  }
-
-  &.log-warn .log-panel__level {
-    color: $color-accent;
-  }
-
-  &.log-error .log-panel__level {
-    color: $color-danger;
+  &__row.log-debug .log-panel__level {
+    color: rgba(245, 240, 235, 0.35);
   }
 
   &__msg {
-    color: rgba(238, 246, 255, 0.82);
+    color: rgba(245, 240, 235, 0.82);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -76,7 +76,7 @@ usePolling(() => store.loadAll(), 30000)
     bottom: 8%;
     left: calc(420px + 22px + 9px);
     width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+    background: linear-gradient(180deg, transparent, rgba(212, 175, 122, 0.15), transparent);
     pointer-events: none;
   }
 
@@ -87,7 +87,7 @@ usePolling(() => store.loadAll(), 30000)
     bottom: 8%;
     right: calc(420px + 22px + 9px);
     width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+    background: linear-gradient(180deg, transparent, rgba(212, 175, 122, 0.15), transparent);
     pointer-events: none;
   }
 
@@ -105,7 +105,7 @@ usePolling(() => store.loadAll(), 30000)
         content: '';
         position: absolute;
         inset: -4px;
-        border: 1px solid rgba(255, 193, 77, 0.08);
+        border: 1px solid rgba(212, 175, 122, 0.06);
         pointer-events: none;
         z-index: 0;
       }
@@ -121,9 +121,9 @@ usePolling(() => store.loadAll(), 30000)
 
   &__ticker {
     @include glass-panel;
-    @include cyber-corners(12px, rgba(255, 193, 77, 0.4));
+    @include luxe-corners(12px, rgba(212, 175, 122, 0.4));
     padding: 10px 16px;
-    border-color: rgba(255, 193, 77, 0.15);
+    border-color: rgba(212, 175, 122, 0.12);
   }
 
   &__logs {

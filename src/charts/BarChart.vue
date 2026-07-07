@@ -13,7 +13,7 @@ const props = defineProps<{
 const option = computed((): EChartsOption => ({
   ...baseChartTheme,
   title: props.title
-    ? { text: props.title, textStyle: { color: '#00d4ff', fontSize: 13 }, left: 0 }
+    ? { text: props.title, textStyle: { color: '#e8c896', fontSize: 13 }, left: 0 }
     : undefined,
   xAxis: {
     type: 'category' as const,
@@ -35,7 +35,7 @@ const option = computed((): EChartsOption => ({
             y2: 1,
             colorStops: [
               { offset: 0, color: chartColors[i % chartColors.length] },
-              { offset: 1, color: 'rgba(0, 212, 255, 0.15)' },
+              { offset: 1, color: 'rgba(167, 139, 250, 0.12)' },
             ],
           },
           borderRadius: [4, 4, 0, 0],

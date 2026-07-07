@@ -13,13 +13,13 @@ const props = defineProps<{
 const option = computed((): EChartsOption => ({
   ...baseChartTheme,
   title: props.title
-    ? { text: props.title, textStyle: { color: '#00d4ff', fontSize: 13 }, left: 'center' }
+    ? { text: props.title, textStyle: { color: '#e8c896', fontSize: 13 }, left: 'center' }
     : undefined,
   legend: {
     orient: 'vertical' as const,
     right: 0,
     top: 'center',
-    textStyle: { color: 'rgba(232,244,255,0.7)', fontSize: 11 },
+    textStyle: { color: 'rgba(245, 240, 235, 0.65)', fontSize: 11 },
   },
   series: [
     {
@@ -31,10 +31,10 @@ const option = computed((): EChartsOption => ({
         value: d.value,
         itemStyle: { color: chartColors[i % chartColors.length] },
       })),
-      label: { color: 'rgba(232,244,255,0.75)', fontSize: 11 },
+      label: { color: 'rgba(245, 240, 235, 0.72)', fontSize: 11 },
       emphasis: {
         scale: true,
-        itemStyle: { shadowBlur: 16, shadowColor: 'rgba(0,212,255,0.45)' },
+        itemStyle: { shadowBlur: 16, shadowColor: 'rgba(212, 175, 122, 0.35)' },
       },
     },
   ],

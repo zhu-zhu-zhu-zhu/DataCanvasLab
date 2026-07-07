@@ -1,12 +1,12 @@
 import type { EChartsOption } from 'echarts'
 
-export const chartColors = ['#00e5ff', '#4f8cff', '#ffc14d', '#a78bfa', '#2dd4bf', '#ff6b8a']
+export const chartColors = ['#e8c896', '#b89bf8', '#f5b8fc', '#9ef0b8', '#f0c0c4', '#ff8fa3']
 
 export const baseChartTheme: EChartsOption = {
   backgroundColor: 'transparent',
   textStyle: {
-    color: 'rgba(238, 246, 255, 0.88)',
-    fontFamily: 'Rajdhani, sans-serif',
+    color: 'rgba(245, 240, 235, 0.88)',
+    fontFamily: 'DM Sans, sans-serif',
   },
   grid: {
     left: 44,
@@ -16,20 +16,21 @@ export const baseChartTheme: EChartsOption = {
     containLabel: true,
   },
   tooltip: {
-    backgroundColor: 'rgba(4, 12, 28, 0.94)',
-    borderColor: 'rgba(0, 229, 255, 0.45)',
+    backgroundColor: 'rgba(18, 16, 26, 0.92)',
+    borderColor: 'rgba(232, 200, 150, 0.4)',
     borderWidth: 1,
-    extraCssText: 'box-shadow: 0 0 20px rgba(0,229,255,0.25); backdrop-filter: blur(8px);',
-    textStyle: { color: '#eef6ff', fontSize: 12 },
+    extraCssText:
+      'box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(167,139,250,0.15); backdrop-filter: blur(12px); border-radius: 6px;',
+    textStyle: { color: '#f5f0eb', fontSize: 12 },
   },
 }
 
 export function axisStyle() {
   return {
-    axisLine: { lineStyle: { color: 'rgba(0, 229, 255, 0.25)', width: 1 } },
+    axisLine: { lineStyle: { color: 'rgba(232, 200, 150, 0.25)', width: 1 } },
     axisTick: { show: false },
-    axisLabel: { color: 'rgba(238, 246, 255, 0.55)', fontSize: 10, fontFamily: 'Orbitron' },
-    splitLine: { lineStyle: { color: 'rgba(0, 229, 255, 0.06)', type: 'dashed' as const } },
+    axisLabel: { color: 'rgba(250, 247, 244, 0.55)', fontSize: 10, fontFamily: 'DM Sans' },
+    splitLine: { lineStyle: { color: 'rgba(184, 155, 248, 0.08)', type: 'dashed' as const } },
   }
 }
 
@@ -41,8 +42,9 @@ export function neonLineGradient() {
     x2: 0,
     y2: 1,
     colorStops: [
-      { offset: 0, color: 'rgba(0, 229, 255, 0.45)' },
-      { offset: 1, color: 'rgba(0, 229, 255, 0.02)' },
+      { offset: 0, color: 'rgba(232, 200, 150, 0.42)' },
+      { offset: 0.5, color: 'rgba(184, 155, 248, 0.14)' },
+      { offset: 1, color: 'rgba(184, 155, 248, 0.02)' },
     ],
   }
 }

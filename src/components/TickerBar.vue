@@ -23,13 +23,15 @@ import { tickerMessages } from '@/mock/data/dashboard.data'
 
   &__label {
     flex-shrink: 0;
-    font-family: $font-display;
+    font-family: $font-body;
     font-size: 9px;
-    letter-spacing: 0.2em;
-    color: $color-accent;
-    padding: 4px 8px;
-    border: 1px solid rgba(255, 193, 77, 0.35);
-    background: rgba(255, 193, 77, 0.08);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: $color-primary;
+    padding: 5px 10px;
+    border: 1px solid rgba(212, 175, 122, 0.25);
+    background: rgba(212, 175, 122, 0.06);
+    border-radius: $radius-sm;
   }
 
   &__viewport {
@@ -47,18 +49,18 @@ import { tickerMessages } from '@/mock/data/dashboard.data'
   &__item {
     font-size: 12px;
     color: $color-text-dim;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     white-space: nowrap;
 
     &::before {
       content: '';
       display: inline-block;
-      width: 6px;
-      height: 6px;
+      width: 4px;
+      height: 4px;
       margin-right: 10px;
-      background: $color-primary;
-      box-shadow: 0 0 6px $color-primary;
-      transform: rotate(45deg);
+      background: $color-secondary;
+      box-shadow: 0 0 6px rgba(167, 139, 250, 0.5);
+      border-radius: 50%;
       vertical-align: middle;
     }
   }

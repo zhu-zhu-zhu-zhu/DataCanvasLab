@@ -3,16 +3,18 @@
 @mixin glass-panel {
   position: relative;
   background:
-    linear-gradient(135deg, rgba(0, 229, 255, 0.06) 0%, transparent 40%),
-    linear-gradient(225deg, rgba(79, 140, 255, 0.05) 0%, transparent 45%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 38%),
+    linear-gradient(225deg, rgba(184, 155, 248, 0.06) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(232, 200, 150, 0.04) 0%, transparent 30%),
     $color-panel;
-  backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(0, 229, 255, 0.18);
-  border-radius: 2px;
+  backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgba(232, 200, 150, 0.18);
+  border-radius: $radius-md;
   box-shadow:
     $glow-primary,
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 0 0 40px rgba(0, 229, 255, 0.03);
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+    inset 0 0 80px rgba(184, 155, 248, 0.04);
   overflow: hidden;
 
   &::before {
@@ -21,31 +23,32 @@
     inset: 0;
     background: linear-gradient(
       180deg,
-      rgba(0, 229, 255, 0.04) 0%,
-      transparent 28%,
-      transparent 72%,
-      rgba(79, 140, 255, 0.03) 100%
+      rgba(255, 255, 255, 0.06) 0%,
+      transparent 20%,
+      transparent 78%,
+      rgba(184, 155, 248, 0.03) 100%
     );
     pointer-events: none;
   }
 }
 
-@mixin cyber-corners($size: 14px, $color: $color-primary) {
+@mixin luxe-corners($size: 12px, $color: $color-primary) {
   &::after {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
+    border-radius: inherit;
     background:
-      linear-gradient($color, $color) 0 0 / #{$size} 2px no-repeat,
-      linear-gradient($color, $color) 0 0 / 2px #{$size} no-repeat,
-      linear-gradient($color, $color) 100% 0 / #{$size} 2px no-repeat,
-      linear-gradient($color, $color) 100% 0 / 2px #{$size} no-repeat,
-      linear-gradient($color, $color) 0 100% / #{$size} 2px no-repeat,
-      linear-gradient($color, $color) 0 100% / 2px #{$size} no-repeat,
-      linear-gradient($color, $color) 100% 100% / #{$size} 2px no-repeat,
-      linear-gradient($color, $color) 100% 100% / 2px #{$size} no-repeat;
-    opacity: 0.75;
+      linear-gradient($color, $color) 0 0 / #{$size} 1px no-repeat,
+      linear-gradient($color, $color) 0 0 / 1px #{$size} no-repeat,
+      linear-gradient($color, $color) 100% 0 / #{$size} 1px no-repeat,
+      linear-gradient($color, $color) 100% 0 / 1px #{$size} no-repeat,
+      linear-gradient($color, $color) 0 100% / #{$size} 1px no-repeat,
+      linear-gradient($color, $color) 0 100% / 1px #{$size} no-repeat,
+      linear-gradient($color, $color) 100% 100% / #{$size} 1px no-repeat,
+      linear-gradient($color, $color) 100% 100% / 1px #{$size} no-repeat;
+    opacity: 0.65;
   }
 }
 
@@ -56,8 +59,8 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.6), transparent);
-    animation: scanMove 4s linear infinite;
+    background: linear-gradient(90deg, transparent, rgba(232, 200, 150, 0.45), transparent);
+    animation: scanMove 5s linear infinite;
     pointer-events: none;
     z-index: 2;
   }
@@ -66,17 +69,17 @@
 @mixin glow-text($color: $color-primary) {
   color: $color;
   text-shadow:
-    0 0 8px rgba($color, 0.5),
-    0 0 20px rgba($color, 0.25);
+    0 0 14px rgba($color, 0.4),
+    0 0 28px rgba($color, 0.18);
 }
 
 @mixin section-title {
-  font-family: $font-display;
-  font-size: 14px;
+  font-family: $font-body;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  @include glow-text($color-primary);
+  color: $color-primary;
 }
 
 @keyframes scanMove {
@@ -85,10 +88,10 @@
     opacity: 0;
   }
   10% {
-    opacity: 1;
+    opacity: 0.7;
   }
   90% {
-    opacity: 1;
+    opacity: 0.7;
   }
   100% {
     top: 100%;
@@ -120,8 +123,77 @@
   100% {
     transform: translate(0, 0) scale(1);
   }
+  33% {
+    transform: translate(16px, -12px) scale(1.08);
+  }
+  66% {
+    transform: translate(-8px, 8px) scale(0.95);
+  }
+}
+
+@keyframes auroraShift {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(1) translate(0, 0);
+  }
+  33% {
+    opacity: 0.9;
+    transform: scale(1.08) translate(20px, -15px);
+  }
+  66% {
+    opacity: 0.75;
+    transform: scale(0.96) translate(-15px, 10px);
+  }
+}
+
+@keyframes auroraDrift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
   50% {
-    transform: translate(12px, -8px) scale(1.05);
+    transform: translate(40px, -25px) rotate(5deg);
+  }
+  100% {
+    transform: translate(-20px, 15px) rotate(-3deg);
+  }
+}
+
+@keyframes lightSweep {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gridFlow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 60px;
   }
 }
 

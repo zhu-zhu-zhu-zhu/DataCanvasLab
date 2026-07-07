@@ -2,7 +2,7 @@
 defineProps<{
   title: string
   height?: string
-  accent?: 'cyan' | 'gold' | 'purple'
+  accent?: 'gold' | 'violet' | 'rose'
 }>()
 </script>
 
@@ -33,46 +33,70 @@ defineProps<{
 <style scoped lang="scss">
 .panel-box {
   @include glass-panel;
-  @include cyber-corners(16px, rgba(0, 229, 255, 0.55));
+  @include luxe-corners(14px, rgba(212, 175, 122, 0.45));
   display: flex;
   flex-direction: column;
   min-height: 0;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
 
   &:hover {
-    border-color: rgba(0, 229, 255, 0.35);
+    border-color: rgba(212, 175, 122, 0.28);
     box-shadow:
-      0 0 32px rgba(0, 229, 255, 0.18),
-      inset 0 0 50px rgba(0, 229, 255, 0.05);
+      0 0 40px rgba(167, 139, 250, 0.12),
+      inset 0 0 50px rgba(212, 175, 122, 0.03);
   }
 
   &--gold {
-    @include cyber-corners(16px, rgba(255, 193, 77, 0.55));
-    border-color: rgba(255, 193, 77, 0.2);
+    @include luxe-corners(14px, rgba(212, 175, 122, 0.55));
+    border-color: rgba(212, 175, 122, 0.22);
 
     .panel-box__indicator,
     .panel-box__dot {
-      background: $color-accent;
-      box-shadow: 0 0 10px $color-accent;
+      background: $color-primary;
+      box-shadow: 0 0 10px rgba(212, 175, 122, 0.5);
     }
 
     .panel-box__title {
-      @include glow-text($color-accent);
+      color: $color-primary;
     }
   }
 
-  &--purple {
-    @include cyber-corners(16px, rgba(139, 92, 246, 0.55));
+  &--violet {
+    @include luxe-corners(14px, rgba(167, 139, 250, 0.5));
+    border-color: rgba(167, 139, 250, 0.18);
+
+    .panel-box__indicator {
+      background: linear-gradient(180deg, $color-secondary, $color-purple);
+      box-shadow: 0 0 10px rgba(167, 139, 250, 0.45);
+    }
+
+    .panel-box__title {
+      color: $color-secondary;
+    }
+  }
+
+  &--rose {
+    @include luxe-corners(14px, rgba(240, 171, 252, 0.45));
+    border-color: rgba(240, 171, 252, 0.15);
+
+    .panel-box__indicator {
+      background: $color-accent;
+      box-shadow: 0 0 10px rgba(240, 171, 252, 0.4);
+    }
+
+    .panel-box__title {
+      color: $color-accent;
+    }
   }
 
   &__shine {
     position: absolute;
     top: 0;
     left: -100%;
-    width: 60%;
+    width: 50%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
-    animation: shimmer 6s ease-in-out infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+    animation: shimmer 7s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
   }
@@ -81,8 +105,8 @@ defineProps<{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 14px 8px;
-    border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+    padding: 12px 16px 10px;
+    border-bottom: 1px solid rgba(212, 175, 122, 0.1);
     position: relative;
     z-index: 2;
   }
@@ -90,17 +114,18 @@ defineProps<{
   &__title-wrap {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex: 1;
     min-width: 0;
   }
 
   &__indicator {
-    width: 3px;
-    height: 14px;
+    width: 2px;
+    height: 16px;
     background: linear-gradient(180deg, $color-primary, $color-secondary);
-    box-shadow: 0 0 8px $color-primary;
+    box-shadow: 0 0 8px rgba(212, 175, 122, 0.4);
     flex-shrink: 0;
+    border-radius: 1px;
   }
 
   &__title {
@@ -111,8 +136,8 @@ defineProps<{
   &__line {
     flex: 1;
     height: 1px;
-    margin-left: 8px;
-    background: linear-gradient(90deg, rgba(0, 229, 255, 0.4), transparent);
+    margin-left: 10px;
+    background: linear-gradient(90deg, rgba(212, 175, 122, 0.35), transparent);
   }
 
   &__meta {
@@ -123,26 +148,27 @@ defineProps<{
   }
 
   &__dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: $color-success;
-    box-shadow: 0 0 8px $color-success;
-    animation: pulseGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(134, 239, 172, 0.5);
+    animation: pulseGlow 2.5s ease-in-out infinite;
   }
 
   &__status {
-    font-family: $font-display;
+    font-family: $font-body;
     font-size: 9px;
-    letter-spacing: 0.2em;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     color: $color-success;
-    opacity: 0.85;
+    opacity: 0.8;
   }
 
   &__body {
     flex: 1;
     min-height: 0;
-    padding: 12px 14px 14px;
+    padding: 14px 16px 16px;
     position: relative;
     z-index: 2;
   }
